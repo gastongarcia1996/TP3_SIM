@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TP3_SIM", "TP3_SIM\TP3_SIM.vbproj", "{AFF84F88-462D-4545-B3E8-8B342B38AC55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AFF84F88-462D-4545-B3E8-8B342B38AC55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF84F88-462D-4545-B3E8-8B342B38AC55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF84F88-462D-4545-B3E8-8B342B38AC55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF84F88-462D-4545-B3E8-8B342B38AC55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F15DE10F-B82F-4253-A613-BD08D2CDD03C}
+	EndGlobalSection
+EndGlobal
