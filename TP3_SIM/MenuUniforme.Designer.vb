@@ -33,7 +33,7 @@ Partial Class MenuUniforme
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(273, 176)
+        Me.Button1.Location = New System.Drawing.Point(160, 152)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 0
@@ -95,7 +95,7 @@ Partial Class MenuUniforme
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(618, 240)
+        Me.ClientSize = New System.Drawing.Size(404, 192)
         Me.Controls.Add(Me.txt_tamMuestra)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txt_constanteB)

@@ -10,8 +10,9 @@
         Me.tamMuestra = tamMuestra
     End Sub
 
-    Public Function GeneradorUniforme() As Double
-        Return Me.constanteA + (Math.Truncate(GenerarAleatorioLenguaje() * 10000) / 10000) * (Me.constanteB - Me.constanteA)
+    Public Function GenerarUniforme() As Double
+        'Return Me.constanteA + (Math.Truncate(GenerarAleatorioLenguaje() * 10000) / 10000) * (Me.constanteB - Me.constanteA)
+        Return Math.Truncate(Me.constanteA + GenerarAleatorioLenguaje() * (Me.constanteB - Me.constanteA) * 10000) / 10000
     End Function
 
     Public Function GenerarAleatorioLenguaje() As Double
