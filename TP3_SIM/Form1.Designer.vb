@@ -120,7 +120,7 @@ Partial Class Form1
         Me.lbl_numIntervalos.Name = "lbl_numIntervalos"
         Me.lbl_numIntervalos.Size = New System.Drawing.Size(19, 20)
         Me.lbl_numIntervalos.TabIndex = 8
-        Me.lbl_numIntervalos.Text = "3"
+        Me.lbl_numIntervalos.Text = "5"
         '
         'Form1
         '

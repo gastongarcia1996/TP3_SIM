@@ -99,6 +99,12 @@
     <Compile Include="MenuExponencial.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MenuNormal.Designer.vb">
+      <DependentUpon>MenuNormal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MenuNormal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MenuPoisson.Designer.vb">
       <DependentUpon>MenuPoisson.vb</DependentUpon>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MenuExponencial.resx">
       <DependentUpon>MenuExponencial.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuNormal.resx">
+      <DependentUpon>MenuNormal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuPoisson.resx">
       <DependentUpon>MenuPoisson.vb</DependentUpon>

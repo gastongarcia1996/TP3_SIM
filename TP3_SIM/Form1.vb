@@ -116,16 +116,16 @@
 
     Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
         If Me.TrackBar1.Value = 1 Then
-            Me.lbl_numIntervalos.Text = 3
-
-        ElseIf Me.TrackBar1.Value = 2 Then
             Me.lbl_numIntervalos.Text = 5
 
+        ElseIf Me.TrackBar1.Value = 2 Then
+            Me.lbl_numIntervalos.Text = 8
+
         ElseIf Me.TrackBar1.Value = 3 Then
-            Me.lbl_numIntervalos.Text = 7
+            Me.lbl_numIntervalos.Text = 10
 
         Else
-            Me.lbl_numIntervalos.Text = 10
+            Me.lbl_numIntervalos.Text = 12
         End If
     End Sub
 End Class
