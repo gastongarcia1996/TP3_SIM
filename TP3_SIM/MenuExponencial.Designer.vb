@@ -83,6 +83,7 @@ Partial Class MenuExponencial
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Name = "MenuExponencial"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MenuExponencial"
         Me.ResumeLayout(False)
         Me.PerformLayout()

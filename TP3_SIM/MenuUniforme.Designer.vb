@@ -104,6 +104,7 @@ Partial Class MenuUniforme
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Name = "MenuUniforme"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MenuUniforme"
         Me.ResumeLayout(False)
         Me.PerformLayout()

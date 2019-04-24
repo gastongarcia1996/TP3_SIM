@@ -83,6 +83,7 @@ Partial Class MenuPoisson
         Me.Controls.Add(Me.txt_lambda)
         Me.Controls.Add(Me.Label2)
         Me.Name = "MenuPoisson"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MenuPoisson"
         Me.ResumeLayout(False)
         Me.PerformLayout()

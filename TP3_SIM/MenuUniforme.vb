@@ -49,4 +49,9 @@
     Public Function GetTamMuestra() As Integer
         Return Me.tamMuestra
     End Function
+
+    Private Sub MenuUniforme_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        e.Cancel = True
+        Me.Hide()
+    End Sub
 End Class

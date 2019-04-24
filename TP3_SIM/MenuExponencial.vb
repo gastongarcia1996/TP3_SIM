@@ -45,4 +45,9 @@
     Public Function GetTamMuestra()
         Return tamMuestra
     End Function
+
+    Private Sub MenuExponencial_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        e.Cancel = True
+        Me.Hide()
+    End Sub
 End Class

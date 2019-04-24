@@ -12,7 +12,8 @@
 
     Public Function GenerarUniforme() As Double
         'Return Me.constanteA + (Math.Truncate(GenerarAleatorioLenguaje() * 10000) / 10000) * (Me.constanteB - Me.constanteA)
-        Return Math.Truncate(Me.constanteA + GenerarAleatorioLenguaje() * (Me.constanteB - Me.constanteA) * 10000) / 10000
+        'Return Math.Truncate(Me.constanteA + GenerarAleatorioLenguaje() * (Me.constanteB - Me.constanteA) * 10000) / 10000
+        Return Me.constanteA + GenerarAleatorioLenguaje() * (Me.constanteB - Me.constanteA)
     End Function
 
     Public Function GenerarAleatorioLenguaje() As Double
