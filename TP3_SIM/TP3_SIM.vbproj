@@ -85,6 +85,7 @@
     <Compile Include="GestorGrafico.vb" />
     <Compile Include="GestorNormal.vb" />
     <Compile Include="GestorPoisson.vb" />
+    <Compile Include="GestorTabla.vb" />
     <Compile Include="GestorUniforme.vb" />
     <Compile Include="Grafico.Designer.vb">
       <DependentUpon>Grafico.vb</DependentUpon>
@@ -132,6 +133,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tabla.Designer.vb">
+      <DependentUpon>Tabla.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabla.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -157,6 +164,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tabla.resx">
+      <DependentUpon>Tabla.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

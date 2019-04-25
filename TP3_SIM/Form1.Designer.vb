@@ -31,6 +31,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.lbl_numIntervalos = New System.Windows.Forms.Label()
+        Me.btn_tabla = New System.Windows.Forms.Button()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -85,7 +86,7 @@ Partial Class Form1
         'btn_grafico
         '
         Me.btn_grafico.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_grafico.Location = New System.Drawing.Point(356, 562)
+        Me.btn_grafico.Location = New System.Drawing.Point(388, 562)
         Me.btn_grafico.Name = "btn_grafico"
         Me.btn_grafico.Size = New System.Drawing.Size(173, 34)
         Me.btn_grafico.TabIndex = 5
@@ -122,11 +123,22 @@ Partial Class Form1
         Me.lbl_numIntervalos.TabIndex = 8
         Me.lbl_numIntervalos.Text = "5"
         '
+        'btn_tabla
+        '
+        Me.btn_tabla.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_tabla.Location = New System.Drawing.Point(12, 562)
+        Me.btn_tabla.Name = "btn_tabla"
+        Me.btn_tabla.Size = New System.Drawing.Size(173, 34)
+        Me.btn_tabla.TabIndex = 9
+        Me.btn_tabla.Text = "Tabla"
+        Me.btn_tabla.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(573, 608)
+        Me.Controls.Add(Me.btn_tabla)
         Me.Controls.Add(Me.lbl_numIntervalos)
         Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.Label1)
@@ -153,4 +165,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents TrackBar1 As TrackBar
     Friend WithEvents lbl_numIntervalos As Label
+    Friend WithEvents btn_tabla As Button
 End Class

@@ -28,7 +28,7 @@
     Private Function ProcesarDatos(ByVal coleccion As ListBox.ObjectCollection, ByVal amplitud As Double, ByVal valMin As Double, ByVal numIntervalos As Integer) As Double()
         Dim valores(numIntervalos) As Double
         Dim aux As Double = 0.0
-        Dim acuAmplitud As Double = valMin
+        Dim acuAmplitud As Double = valMin + amplitud
 
         For i As Integer = 0 To coleccion.Count - 1
 
@@ -45,7 +45,7 @@
                 End If
             Next
 
-            acuAmplitud = valMin
+            acuAmplitud = valMin + amplitud
         Next
         Return valores
     End Function

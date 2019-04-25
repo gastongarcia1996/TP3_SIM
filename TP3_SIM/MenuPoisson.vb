@@ -25,13 +25,19 @@
         Return False
     End Function
 
-    Private Sub txt_a_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_lambda.KeyPress, txt_tamMuestra.KeyPress
+    Private Sub txt_a_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_lambda.KeyPress
         'Verifico que sean solo numeros en los textBox
         If Not Char.IsControl(e.KeyChar) And Not Char.IsDigit(e.KeyChar) And e.KeyChar <> "." Then
             e.Handled = True
         End If
     End Sub
 
+    Private Sub txt_a_KeyPressTamMuestra(sender As Object, e As KeyPressEventArgs) Handles txt_tamMuestra.KeyPress
+        'Verifico que sean solo numeros en los textBox
+        If Not Char.IsControl(e.KeyChar) And Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
     Private Sub LeerTextBox()
         Me.lambda = Double.Parse(Me.txt_lambda.Text)
         Me.tamMuestra = Integer.Parse(Me.txt_tamMuestra.Text)

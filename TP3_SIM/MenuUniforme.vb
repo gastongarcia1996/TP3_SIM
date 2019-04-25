@@ -1,8 +1,8 @@
 ﻿Public Class MenuUniforme
 
-    Private constanteA As Integer
-    Private constanteB As Integer
-    Private tamMuestra As Integer
+    Private constanteA As Double
+    Private constanteB As Double
+    Private tamMuestra As Double
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
@@ -29,24 +29,24 @@
 
     Private Sub txt_a_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_constanteA.KeyPress, txt_constanteB.KeyPress, txt_tamMuestra.KeyPress
         'Verifico que sean solo numeros en los textBox
-        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) And e.KeyChar <> "." Then
             e.Handled = True
         End If
     End Sub
 
     Private Sub LeerTextBox()
-        Me.constanteA = Integer.Parse(Me.txt_constanteA.Text)
-        Me.constanteB = Integer.Parse(Me.txt_constanteB.Text)
-        Me.tamMuestra = Integer.Parse(Me.txt_tamMuestra.Text)
+        Me.constanteA = Double.Parse(Me.txt_constanteA.Text, Globalization.CultureInfo.InvariantCulture)
+        Me.constanteB = Double.Parse(Me.txt_constanteB.Text, Globalization.CultureInfo.InvariantCulture)
+        Me.tamMuestra = Double.Parse(Me.txt_tamMuestra.Text, Globalization.CultureInfo.InvariantCulture)
     End Sub
 
-    Public Function GetConstanteA() As Integer
+    Public Function GetConstanteA() As Double
         Return Me.constanteA
     End Function
-    Public Function GetConstanteB() As Integer
+    Public Function GetConstanteB() As Double
         Return Me.constanteB
     End Function
-    Public Function GetTamMuestra() As Integer
+    Public Function GetTamMuestra() As Double
         Return Me.tamMuestra
     End Function
 
