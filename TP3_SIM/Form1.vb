@@ -42,7 +42,7 @@
             gestorUniforme = New GestorUniforme(Me.menuUniforme.GetConstanteA(), Me.menuUniforme.GetConstanteB(), Me.menuUniforme.GetTamMuestra())
 
             For i As Integer = 0 To Me.menuUniforme.GetTamMuestra()
-                aux = gestorUniforme.GenerarUniforme()
+                aux = gestorUniforme.GenerarUniforme() - 1
 
                 If flag = True Then
                     Me.valMin = aux
@@ -75,7 +75,7 @@
         If Not menuExponencial.GetLambda = Nothing Then
             gestorExponencial = New GestorExponencial(Me.menuExponencial.GetLambda(), Me.menuExponencial.GetTamMuestra())
 
-            For i As Integer = 0 To Me.menuExponencial.GetTamMuestra()
+            For i As Integer = 0 To Me.menuExponencial.GetTamMuestra() - 1
                 aux = gestorExponencial.GenerarExponencial()
                 If flag = True Then
                     Me.valMin = aux
@@ -107,7 +107,7 @@
         If Not Me.menuPoisson.GetLambda = Nothing Then
             gestorPoisson = New GestorPoisson(Me.menuPoisson.GetLambda(), Me.menuPoisson.GetTamMuestra())
 
-            For i As Integer = 0 To Me.menuPoisson.GetTamMuestra()
+            For i As Integer = 0 To Me.menuPoisson.GetTamMuestra() - 1
                 aux = gestorPoisson.GenerarPoisson()
                 If flag = True Then
                     Me.valMin = aux
@@ -139,7 +139,7 @@
         If Not Me.menuNormal.GetMedia() = Nothing Then
             gestorNormal = New GestorNormal(Me.menuNormal.GetMedia(), Me.menuNormal.GetDesvEstandar(), Me.menuNormal.GetTamMuestra())
 
-            For i As Integer = 0 To Me.menuNormal.GetTamMuestra()
+            For i As Integer = 0 To Me.menuNormal.GetTamMuestra() - 1
                 aux = gestorNormal.GenerarNormal()
                 If flag = True Then
                     Me.valMin = aux
@@ -193,7 +193,7 @@
         Else
 
             Dim gestorTabla As New GestorTabla(Me.tabla.DataGridView1, tipoDist)
-
+            Me.tabla.DataGridView1.Rows.Clear()
             Select Case tipoDist
                 Case 1
                     gestorTabla.CompletarTabla(Integer.Parse(lbl_numIntervalos.Text), Me.valMin, Me.valMax, Me.ListBox1.Items, Me.menuUniforme)
