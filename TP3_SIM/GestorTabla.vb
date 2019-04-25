@@ -10,7 +10,7 @@
     Public Sub CompletarTabla(ByVal numIntervalos As Integer, ByVal valMin As Double, ByVal valMax As Double, ByVal coleccion As ListBox.ObjectCollection, ByRef datosDist As Object)
         Dim valores(numIntervalos - 1) As Double
         Dim amplitud = (valMax - valMin) / valores.Length
-        Dim acuAmplitud As Double = valMin + amplitud
+        Dim acuAmplitud As Double = valMin
         Dim intervalos(numIntervalos - 1) As Double
 
         For j As Integer = 0 To numIntervalos - 1
@@ -22,7 +22,7 @@
         valores = ProcesarDatos(coleccion, amplitud, valMin, valores.Length - 1)
         acuAmplitud = valMin
         For i As Integer = 0 To numIntervalos - 1
-            Me.tabla.Rows(i).Cells(0).Value = acuAmplitud
+            Me.tabla.Rows(i).Cells(0).Value = "" & acuAmplitud & " - " & acuAmplitud + amplitud
 
             Me.tabla.Rows(i).Cells(1).Value = valores(i)
 
@@ -37,7 +37,7 @@
                     aux = datosDist
 
                     If i = 0 Then
-                        marcaClase = intervalos(0) / 2
+                        marcaClase = (intervalos(0) - valMin) / 2
 
                     Else
                         marcaClase = (intervalos(i) - intervalos(i - 1)) / 2

@@ -41,7 +41,7 @@ Partial Class Grafico
         Series1.Legend = "Legend1"
         Series1.Name = "Series1"
         Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(776, 426)
+        Me.Chart1.Size = New System.Drawing.Size(941, 426)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
         '
@@ -49,7 +49,7 @@ Partial Class Grafico
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(965, 450)
         Me.Controls.Add(Me.Chart1)
         Me.Name = "Grafico"
         Me.Text = "Grafico"

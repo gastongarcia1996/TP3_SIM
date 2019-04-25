@@ -19,8 +19,8 @@
         valores = ProcesarDatos(coleccion, amplitud, valMin, valores.Length - 1)
 
         For i As Integer = 0 To valores.Length - 1
+            Me.chart.Series(0).Points.AddXY("" & acuAmplitud & " - " & acuAmplitud + amplitud, valores(i))
             acuAmplitud += amplitud
-            Me.chart.Series(0).Points.AddXY("" & acuAmplitud, valores(i))
         Next
 
     End Sub
