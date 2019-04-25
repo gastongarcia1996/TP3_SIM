@@ -10,7 +10,7 @@
     Public Sub CompletarTabla(ByVal numIntervalos As Integer, ByVal valMin As Double, ByVal valMax As Double, ByVal coleccion As ListBox.ObjectCollection, ByRef datosDist As Object)
         Dim valores(numIntervalos - 1) As Double
         Dim amplitud = (valMax - valMin) / valores.Length
-        Dim acuAmplitud As Double = valMin
+        Dim acuAmplitud As Double = valMin + amplitud
         Dim intervalos(numIntervalos - 1) As Double
 
         For j As Integer = 0 To numIntervalos - 1
