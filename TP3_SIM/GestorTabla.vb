@@ -3,13 +3,16 @@
 Public Class GestorTabla
     Private tabla As DataGridView
     Private tipo As Integer
+    Private datosArchivoJI() As String
+    Private datosArchivoKS() As String
+    Private IOArchivo As New IOArchivo
 
     Public Sub New(ByRef tabla As DataGridView, ByVal tipo As Integer)
         Me.tabla = tabla
         Me.tipo = tipo
     End Sub
 
-    Public Sub CompletarTabla(ByVal numIntervalos As Integer, ByVal valMin As Double, ByVal valMax As Double, ByVal coleccion As ListBox.ObjectCollection, ByRef datosDist As Object)
+    Public Sub CompletarTabla(ByVal numIntervalos As Integer, ByVal valMin As Double, ByVal valMax As Double, ByVal coleccion As ListBox.ObjectCollection, ByVal datosDist As Object)
         Dim sumaChi As Double = 0.0
         Dim valores(numIntervalos - 1) As Double
         Dim amplitud = (valMax - valMin) / valores.Length
@@ -33,7 +36,8 @@ Public Class GestorTabla
                 Case 1
                     Dim aux As MenuUniforme
                     aux = datosDist
-                    Me.tabla.Rows(i).Cells(2).Value = (1 / (aux.GetConstanteB() - aux.GetConstanteA())) * aux.GetTamMuestra()
+                    'Me.tabla.Rows(i).Cells(2).Value = (1 / (aux.GetConstanteB() - aux.GetConstanteA())) * aux.GetTamMuestra()
+                    Me.tabla.Rows(i).Cells(2).Value = aux.GetTamMuestra / numIntervalos
                     Me.tabla.Rows(i).Cells(3).Value = Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
                     sumaChi += Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
                 Case 2
@@ -55,38 +59,44 @@ Public Class GestorTabla
                 Case 3
                     Dim aux As MenuNormal
                     Dim marcaClase As Double = 0.0
+                    Dim primerTermino As Double = 0.0
+                    Dim exponenteFormula = 0.0
                     aux = datosDist
 
                     If i = 0 Then
-                        marcaClase = intervalos(0) + valMin / 2
+                        marcaClase = (intervalos(0) + valMin) / 2
 
                     Else
                         marcaClase = (intervalos(i) + intervalos(i - 1)) / 2
                     End If
-
-                    'Me.tabla.Rows(i).Cells(2).Value = ((1 / aux.GetDesvEstandar() * Math.Sqrt(2 * Math.PI)) * Math.Exp((-1 / 2) * Math.Pow((marcaClase - aux.GetMedia) / aux.GetDesvEstandar, 2))) * aux.GetTamMuestra()
+                    primerTermino = (1 / (aux.GetDesvEstandar() * Math.Sqrt(2 * Math.PI)))
+                    exponenteFormula = (-1 / 2) * Math.Pow((marcaClase - aux.GetMedia) / aux.GetDesvEstandar, 2)
+                    Me.tabla.Rows(i).Cells(2).Value = (primerTermino * Math.Exp(exponenteFormula)) * aux.GetTamMuestra()
                     Me.tabla.Rows(i).Cells(3).Value = Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
                     sumaChi += Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
                 Case 4
                     Dim aux As MenuPoisson
                     Dim marcaClase As Double = 0.0
+                    Dim poisson As Double = 0.0
                     aux = datosDist
 
                     If i = 0 Then
                         marcaClase = intervalos(0) + valMin / 2
-
                     Else
                         marcaClase = (intervalos(i) + intervalos(i - 1)) / 2
                     End If
 
-                    Me.tabla.Rows(i).Cells(2).Value = ((Math.Pow(aux.GetLambda(), marcaClase) * Math.Exp(-aux.GetLambda())) / Factorial(marcaClase)) * aux.GetTamMuestra()
+                    'poisson = ((Math.Pow(aux.GetLambda(), marcaClase) * Math.Exp(-aux.GetLambda())) / Factorial(marcaClase)) * aux.GetTamMuestra()
+                    poisson = PoissonAcum(acuAmplitud, acuAmplitud + amplitud, aux)
+                    Me.tabla.Rows(i).Cells(2).Value = poisson * aux.GetTamMuestra()
 
-                    Me.tabla.Rows(i).Cells(3).Value = Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
+                    Me.tabla.Rows(i).Cells(3).Value = Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value.ToString()
                     sumaChi += Math.Pow(Me.tabla.Rows(i).Cells(1).Value - Me.tabla.Rows(i).Cells(2).Value, 2) / Me.tabla.Rows(i).Cells(2).Value
             End Select
             acuAmplitud += amplitud
         Next
         Me.tabla.Rows(numIntervalos).Cells(3).Value = sumaChi
+        ValidarChiCuadrado(numIntervalos)
     End Sub
 
     Private Function ProcesarDatos(ByVal coleccion As ListBox.ObjectCollection, ByVal amplitud As Double, ByVal valMin As Double, ByVal numIntervalos As Integer) As Double()
@@ -114,6 +124,43 @@ Public Class GestorTabla
         Return valores
     End Function
 
+    Private Function PoissonAcum(ByVal intInf As Integer, ByVal intSup As Integer, ByRef aux As MenuPoisson) As Double
+        Dim acuPoissonSup As Double = 0.0
+        Dim acuPoissonInf As Double = 0.0
+        Dim fact As Double = 1.0
+        Dim retorno As Double = 0.0
+
+        For i As Integer = 0 To intSup
+
+
+            For j As Integer = 0 To i
+                If j = 0 Then
+                    fact *= 1 / 1
+                Else
+                    fact *= 1 / j
+                End If
+            Next
+            acuPoissonSup += (Math.Pow(aux.GetLambda(), i) * Math.Exp(-aux.GetLambda())) * fact
+            fact = 1.0
+        Next
+
+        For i As Integer = 0 To intInf
+
+            For j As Integer = 0 To i
+                If j = 0 Then
+                    fact *= 1 / 1
+                Else
+                    fact *= 1 / j
+                End If
+            Next
+            acuPoissonInf += (Math.Pow(aux.GetLambda(), i) * Math.Exp(-aux.GetLambda())) * fact
+            fact = 1.0
+        Next
+        retorno = acuPoissonSup - acuPoissonInf
+
+        Return retorno
+    End Function
+
     'Private Function Factorial(ByVal x As Integer) As BigInteger
     '    Dim fact As New BigInteger(1)
 
@@ -139,4 +186,32 @@ Public Class GestorTabla
 
         Return fact
     End Function
+
+    Public Sub ValidarChiCuadrado(ByVal numIntervalos As Integer)
+        Dim r As New Globalization.CultureInfo("es-ES")
+        r.NumberFormat.NumberDecimalSeparator = "."
+
+        System.Threading.Thread.CurrentThread.CurrentCulture = r
+
+        Me.datosArchivoJI = Me.IOArchivo.LeerArchivo("C:\Users\GyM\Desktop\Facultad\Simulacion\TP3_SIM\tablaJI.txt") 'Acordarse de cambiar las rutas
+
+        Dim valorChi = Me.tabla.Rows(numIntervalos).Cells(3).Value.ToString()
+        If valorChi.CompareTo("0") <> 0 Then
+
+            If datosArchivoJI.Contains(numIntervalos.ToString()) Then
+                If Double.Parse(valorChi) < Double.Parse(datosArchivoJI.ElementAt(Array.IndexOf(datosArchivoJI, (numIntervalos - 1).ToString()) + 1), Globalization.NumberStyles.AllowDecimalPoint) Then
+
+                    MessageBox.Show("Para " & (numIntervalos - 1).ToString() & " grados de libertad y confianza %95, el valor de chi-cuadrado es: " & Convert.ToDouble(datosArchivoJI.ElementAt(Array.IndexOf(datosArchivoJI, (numIntervalos - 1).ToString()) + 1)) &
+                                    " por lo tanto se acepta la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Asterisk)
+                    Me.tabla.Rows(numIntervalos).Cells(3).Style.BackColor = Color.Green
+                Else
+                    MessageBox.Show("Para " & (numIntervalos - 1).ToString() & "grados de libertad y confianza %95, el valor de chi-cuadrado es: " & Convert.ToDouble(datosArchivoJI.ElementAt(Array.IndexOf(datosArchivoJI, numIntervalos.ToString()) + 1)) &
+                                    " por lo tanto se rechaza la hipotesis", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                    Me.tabla.Rows(numIntervalos).Cells(3).Style.BackColor = Color.Red
+                End If
+            End If
+
+
+        End If
+    End Sub
 End Class
